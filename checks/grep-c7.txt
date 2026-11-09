@@ -6,6 +6,6 @@ none
 none
 == voice + chair names (each must say synth) ==
 7
-== live http://127.0.0.1:8917/app.js ==
+== live https://torchroll.vercel.app/app.js ==
 none
 PASS: pinned, deterministic, honestly named

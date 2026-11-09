@@ -1,0 +1,201 @@
+{
+ "live_ctx": {
+  "sampleRate": 48000,
+  "state": "running",
+  "status": "Audio on. Play your MIDI keyboard, or press Play to run the roll engine + band.",
+  "midiNote": "MIDI keyboard: Mock Keys 49. Play it: notes, velocity, sustain, mod wheel, expression and pitch bend all work."
+ },
+ "midi": {
+  "note_on_voices": 1,
+  "note_on_transport_started": false,
+  "note_on_output_peak": 0.1579,
+  "velocity20_peak": 0.0636,
+  "sustain_held_after_noteoff": {
+   "voices": 1,
+   "sustain": true
+  },
+  "voices_after_cc64_up": 0,
+  "cc1_64_tremDepth": 0.5,
+  "clock_start_msgs_start_transport": false,
+  "midi_out_sent": [
+   [
+    144,
+    64,
+    90
+   ],
+   [
+    128,
+    64,
+    0
+   ]
+  ],
+  "selects": {
+   "in": [
+    "(none)",
+    "Mock Keys 49"
+   ],
+   "out": [
+    "(none)",
+    "Mock Synth Out"
+   ],
+   "audioOut": [
+    "System default",
+    "Output 1"
+   ]
+  },
+  "pass": true
+ },
+ "c1_export": {
+  "file": "torchroll-torch-92bpm-Am.wav",
+  "frames": 1001739,
+  "expected": 1001739,
+  "sr": 48000,
+  "bits": 24,
+  "channels": 2,
+  "peak_dBFS": -1.1,
+  "first_transient_sample": 42,
+  "first_transient_ms": 0.875,
+  "pass": true
+ },
+ "c2_loop": {
+  "seam_jump": 0.09609,
+  "p99_9_step": 0.10118,
+  "median_step": 0.005333,
+  "kick_onset_vs_bar_line_samples_4x": [
+   0,
+   1
+  ],
+  "bar_len_samples": 125217.375,
+  "pass": true
+ },
+ "midi_file": {
+  "file": "torchroll-torch-92bpm-Am.mid",
+  "type": 1,
+  "tracks": [
+   "TorchRoll 92 BPM torchroll-torch-92bpm-Am",
+   "Torch Keys (synth EP: Torch Roll)",
+   "Breath Pad (synth)",
+   "Velvet Bass (synth)",
+   "Brush Kit (synth)"
+  ],
+  "tempo_bpm": [
+   92.0
+  ],
+  "timesig": [
+   [
+    4,
+    4
+   ]
+  ],
+  "track_len_ticks": [
+   15360
+  ],
+  "expected_ticks": 15360,
+  "pass": true
+ },
+ "c4_live": {
+  "recipe_heard_after_s": 0.335,
+  "mute_heard_after_s": 0.206,
+  "bpm_heard_after_s": 0.305,
+  "one_bar_s_at_92": 2.609,
+  "steps_continuous_no_restart": true,
+  "audio_clock_times_increasing": true,
+  "keys_follow_current_pattern_every_step": true,
+  "steps_logged": 28,
+  "stop_clears_transport": true,
+  "pass": true
+ },
+ "stop_silence": {
+  "ms": 59.599999994039536,
+  "peak": 0,
+  "live": 0,
+  "pass_": true
+ },
+ "c3_hidden": {
+  "hidden_for_s": 30,
+  "steps_scheduled_after_hide": 0,
+  "playing_after_return": false,
+  "output_peak_after_return": 0,
+  "status": "Stopped because the tab was hidden. Press Play to start again.",
+  "play_button": "\u25b6 Play roll + band",
+  "pass": true
+ },
+ "c6_sustain": {
+  "bpm": 60,
+  "note_len_s": 32.0,
+  "frames": 1536000,
+  "rms_at_1s": 0.20835,
+  "rms_last_0.5s": 0.17275,
+  "ratio_last_vs_1s": 0.829,
+  "min_rms_any_half_second": 0.17243,
+  "pass": true,
+  "pad": {
+   "chord": "Am9 tied 8 bars = 32 s",
+   "rms_at_1s": 0.21188,
+   "rms_last_0.5s": 0.19377,
+   "min_rms_after_attack": 0.19377
+  },
+  "live_hold_peaks_every_0.5s": [
+   0.2834,
+   0.186,
+   0.1792,
+   0.1777,
+   0.1604,
+   0.1667,
+   0.156,
+   0.1582
+  ]
+ },
+ "c5_blocked_host": {
+  "result": "N/A: no sample host. Every voice is synthesized in the browser and named as a synth, so there is nothing to block.",
+  "third_party_hosts_requested": [],
+  "requests_blocked_when_all_other_hosts_blocked": [],
+  "plays_with_all_other_hosts_blocked": true,
+  "pass": true
+ },
+ "c7_grep": {
+  "script": "qa/no_unpinned.sh",
+  "exit": 0,
+  "tail": [
+   "PASS: pinned, deterministic, honestly named"
+  ],
+  "voice_names": [
+   "Velvet Tine (synth FM electric piano: sine carrier + tine modulator)",
+   "Satin Bell (synth FM bell-piano, 3.5:1 modulator)",
+   "Smoke Reed (synth reedy EP: soft square + triangle, low-pass)",
+   "Torch Keys (your keys / roll engine, synth EP)",
+   "Breath Pad (synth: detuned triangles + filtered breath noise)",
+   "Velvet Bass (synth: sine + soft pluck, upright-style)",
+   "Brush Kit (synth: noise swish, soft kick, rim click)"
+  ],
+  "pass": true
+ },
+ "persist_and_gate": {
+  "after_reload": {
+   "bpm": 60,
+   "recipe": "hold",
+   "bars": 8,
+   "key": 9
+  },
+  "gate": {
+   "gated": false,
+   "buy": "Checkout opening soon \u00b7 $19 once",
+   "lic": "Launch: full exports free until checkout opens. WAV + MIDI at every length (4, 8 or 16 bars). ($19 once when checkout opens.)"
+  },
+  "pass": true
+ },
+ "page_errors": [],
+ "summary": {
+  "midi": true,
+  "c1_export": true,
+  "c2_loop": true,
+  "midi_file": true,
+  "c4_live": true,
+  "stop_silence": true,
+  "c3_hidden": true,
+  "c6_sustain": true,
+  "c5_blocked_host": true,
+  "c7_grep": true,
+  "persist_and_gate": true
+ }
+}

@@ -7,6 +7,6 @@ __pycache__/
 *.wav
 *.mid
 demo/raw/
-demo/*.mp4
+demo/raw/*.webm
 demo/*.png
 checks/out/

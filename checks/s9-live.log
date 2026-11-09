@@ -1,0 +1,14 @@
+{
+ "midi": true,
+ "c1_export": true,
+ "c2_loop": true,
+ "midi_file": true,
+ "c4_live": true,
+ "stop_silence": true,
+ "c3_hidden": true,
+ "c6_sustain": true,
+ "c5_blocked_host": true,
+ "c7_grep": true,
+ "persist_and_gate": true
+}
+errors []
