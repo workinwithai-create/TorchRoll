@@ -1,0 +1,11 @@
+== @main / @gh-pages in repo ==
+none
+== Math.random in repo ==
+none
+== sample/CDN URLs (should be none: all voices are synthesized) ==
+none
+== voice + chair names (each must say synth) ==
+7
+== live http://127.0.0.1:8917/app.js ==
+none
+PASS: pinned, deterministic, honestly named

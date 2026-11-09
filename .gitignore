@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env*
+.vercel
+qa/out/
+__pycache__/
+*.wav
+*.mid
+demo/raw/
+demo/*.mp4
+demo/*.png
+checks/out/

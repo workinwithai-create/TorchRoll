@@ -1,0 +1,8 @@
+{
+  "name": "torchroll",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TorchRoll: a playable late-night torch-ballad keyboard for your MIDI keys. Slow triplet roll engine (rolled chords, triplet arps, grace leans, tempo-locked tremolo) over breath pad, upright-style bass and brushes on YOUR BPM/key/chords. DAW-grid WAV + MIDI export.",
+  "scripts": { "build": "rm -rf dist && mkdir -p dist && cp index.html app.js styles.css dist/" },
+  "license": "UNLICENSED"
+}

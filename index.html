@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TorchRoll · a late-night torch-ballad keyboard for your MIDI keys</title>
+<meta name="description" content="A playable sultry-ballad keyboard: hold chords on your MIDI keyboard and a slow triplet roll engine comps them with rolled chords, triplet arps, grace-note leans and tempo-locked tremolo over a breath pad, upright-style bass and brushes, on YOUR BPM/key/chords. Exports DAW-ready 48k/24 WAV + MIDI.">
+<link rel="stylesheet" href="styles.css"></head>
+<body>
+<div id="tap" class="tap"><div class="tapbox"><h1>TORCH<span>ROLL</span></h1><p>Hold chords on your MIDI keyboard. A slow triplet roll engine turns them into a late-night torch ballad.</p><button id="tapBtn">Tap to start audio</button><p class="small">On iPhone/iPad, turn off the silent switch: it mutes Web Audio.</p></div></div>
+<header><h1>TORCH<span>ROLL</span></h1><p class="tag">A playable sultry-ballad keyboard for your MIDI keys. Hold a chord and the roll engine comps it in a slow 12/8 lilt (rolled chords, triplet arps, grace-note leans, tempo-locked tremolo) over a breath pad, an upright-style bass and brushes, on the grid of <b>your</b> BPM and key.</p>
+<div id="status" class="status">Tap to start audio.</div></header>
+<main>
+<section class="card song"><h2>1 · Your loop</h2>
+ <div class="row"><label>BPM <input id="bpm" type="number" min="60" max="180" step="1"></label>
+ <label>Key <select id="key"></select></label><label>Mode <select id="mode"><option value="major">major</option><option value="minor">minor</option></select></label>
+ <label>Bars <select id="bars"><option>4</option><option>8</option><option>16</option></select></label>
+ <label class="grow">Chords (one per bar, looped) <input id="chords" placeholder="Am9 Dm9 Gsus4 Cmaj7"></label></div>
+ <div id="chordErr" class="err"></div>
+ <p class="small">Your BPM, key and chords are saved in this browser and used for playback and export. Changing the key transposes the chords and your take. The feel is triplet (12/8 inside each 4/4 bar), so exports still sit on a plain 4/4 DAW grid.</p>
+</section>
+<section class="card play"><h2>2 · Play</h2>
+ <div class="row"><button id="play" class="big">▶ Play roll + band</button><button id="rec" class="rec">● Rec take</button><button id="clear">Clear take</button>
+ <label class="chk"><input id="quant" type="checkbox"> Snap take to triplets</label><span id="pos" class="pos">bar – · beat –</span></div>
+ <div id="steps" class="steps"></div>
+ <p id="takeInfo" class="small"></p>
+ <div id="keys" class="keys"></div>
+ <p class="small">Your MIDI keyboard plays the keys voice right away and never starts the transport. Stopped, you hear the raw EP so you can audition voicings. Playing, the roll engine comps whatever you hold (or your take, or the chord of the bar). Fallback keys: A W S E D F T G Y H U J K O L P ; (Z / X = octave).</p>
+</section>
+<section class="card gate"><h2>3 · Roll engine</h2>
+ <div class="row"><label>Recipe <select id="recipe"></select></label>
+ <label>Ring <input id="ring" type="range" min="0.5" max="12" step="0.1"><span id="ring_v"></span></label>
+ <label>Roll spread <input id="spread" type="range" min="0" max="0.12" step="0.001"><span id="spread_v"></span></label>
+ <label>Tremolo <input id="trem" type="range" min="0" max="1" step="0.01"><span id="trem_v"></span></label>
+ <label>Breath (pad) <input id="breath" type="range" min="0" max="1" step="0.01"><span id="breath_v"></span></label>
+ <label>Drums <select id="drums"></select></label></div>
+ <div id="grid" class="grid"></div><p id="recipeNote" class="small"></p>
+ <p class="small">12 triplet steps per bar. Codes: <b>R</b> rolled chord · <b>A</b> arp tone · <b>B</b> block chord · <b>L</b> left-hand low note · <b>G</b> grace-note lean · <b>H</b> hold · <b>-</b> rest. Click a step to cycle.</p>
+</section>
+<section class="card voice"><h2>4 · Voice + mix</h2>
+ <div class="row"><label>Voice <select id="voice"></select></label>
+ <label>Brightness <input id="bright" type="range" min="0" max="1" step="0.005"><span id="bright_v"></span></label>
+ <label>Attack <input id="atk" type="range" min="0.002" max="1.5" step="0.001"><span id="atk_v"></span></label>
+ <label>Release <input id="rel" type="range" min="0.01" max="2.5" step="0.01"><span id="rel_v"></span></label>
+ <label class="chk"><input id="lock" type="checkbox"> Scale lock (snap keys to your key)</label></div>
+ <p id="voiceNote" class="small"></p>
+ <h3>Mix</h3><div id="mix" class="mix"></div>
+</section>
+<section class="card io"><h2>5 · MIDI + audio</h2>
+ <div class="row"><label>MIDI in <select id="midiIn"></select></label><label>MIDI out <select id="midiOut"></select></label>
+ <label>Audio out <select id="audioOut"></select></label></div>
+ <p id="midiNote" class="small"></p><p id="audioOutNote" class="small"></p><p id="midiLast" class="small mono"></p>
+ <p class="small">Controls: notes + velocity · CC64 sustain · CC1 mod wheel = tremolo depth · CC74 = brightness · CC11 expression / CC2 breath = pad breath · pitch bend ±2 · CC123 all notes off. MIDI out mirrors what you play and the roll engine (ch 1), the bass (ch 3) and brushes (ch 10). No audio input is used.</p>
+</section>
+<section class="card exp"><h2>6 · Export (drops on bar 1 of your DAW)</h2>
+ <div class="row"><button id="wav">Export WAV</button><button id="mid">Export MIDI</button></div>
+ <progress id="expProg" hidden max="1" value="0"></progress><p id="expMsg" class="expmsg"></p>
+ <p class="small">48 kHz / 24-bit stereo, exactly your bars at your BPM, downbeat at sample 0, ring-out and room tail folded into the start so it loops, peak ≤ −1 dBFS. MIDI: tempo, 4/4, key, one track per chair (Torch Keys, Breath Pad, Velvet Bass, Brush Kit).</p>
+ <div class="lic"><button id="buy" disabled>Checkout opening soon</button><input id="licKey" placeholder="License key"><button id="licBtn">Unlock</button><p id="licState" class="small"></p></div>
+</section>
+<p class="foot">Every sound in TorchRoll is synthesized in your browser and named as a synth. No samples, no accounts, no tracking. © 2026 WorkinWithAI.</p>
+</main>
+<script src="app.js"></script>
+</body></html>
